@@ -6,21 +6,24 @@
  */
 char *read_file(char *filename)
 {
-	int fd, rd;
-	char *buff;
+	FILE *fd;
+	char *buff, *tokens = NULL;
+	size_t buffsize = 1024;
+	unsigned int line = 0;
 
-	buff = malloc(sizeof(char)* 1024);
+	buff = malloc(sizeof(char)* buffsize);
 	/*TODO Malloc validate null*/ 
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	fd = fopen(filename, "r");
+	if (fd == NULL)
 	{
 		printf("%s %s\n", "Error: Can't open file", filename);
 		exit(EXIT_FAILURE);
 	}
-	rd = read(fd, buff, 1024);
-	if (rd > 0)
+	while (getline(&buff, &buffsize, fd) != -1)
 	{
-		buff[rd] = '\0';
+		line++;
+		tokens = strtok(buff, "\n\t\r ");
 	}
-	return (buff);
+
+	return(tokens);
 }

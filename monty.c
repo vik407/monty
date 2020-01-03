@@ -8,6 +8,7 @@
 int main(int argc, char *argv[])
 {
 	char *content;
+
 	if (argc != 2)
 	{
 		printf("%s\n", "USAGE: monty file");
