@@ -7,7 +7,8 @@
 char *read_file(char *filename)
 {
 	FILE *fd;
-	char *buff, *tokens = NULL;
+	char *buff, *opcode = NULL, *args;
+	stack_t *stack = NULL;
 	size_t buffsize = 1024;
 	unsigned int line = 0;
 
@@ -22,8 +23,11 @@ char *read_file(char *filename)
 	while (getline(&buff, &buffsize, fd) != -1)
 	{
 		line++;
-		tokens = strtok(buff, "\n\t\r ");
+		opcode = strtok(buff, "\n\t\r ");
+		args = strtok(NULL, "\n\t\r ");
+		if(opcode)
+			opcode_handler(opcode);
 	}
 
-	return(tokens);
+	return(opcode);
 }

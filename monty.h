@@ -37,5 +37,6 @@ typedef struct instruction_s
 } instruction_t;
 
 char *read_file(char *filename);
+void opcode_handler(char *opcode);
 
 #endif /*_MONTY_H_*/
