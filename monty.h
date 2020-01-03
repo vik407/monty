@@ -38,7 +38,7 @@ typedef struct instruction_s
 } instruction_t;
 
 char *read_file(char *filename);
-void opcode_handler(char *opcode);
+void (*opcode_handler(char *opcode))(stack_t **, unsigned int);
 
 /*I/O functions */
 void push(char *arg, stack_t **stack);

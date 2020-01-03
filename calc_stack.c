@@ -19,6 +19,7 @@ void _add(stack_t **st, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
+	(void) line_number;
 }
 /**
 *_sub - sum twotop values from the st
@@ -40,6 +41,7 @@ void _sub(stack_t **st, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
+	(void) line_number;
 }
 
 /**
@@ -67,6 +69,7 @@ void _div(stack_t **st, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
+	(void) line_number;
 }
 
 /**
@@ -89,6 +92,7 @@ void _mul(stack_t **st, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
+	(void) line_number;
 }
 
 /**
@@ -116,4 +120,5 @@ void _mod(stack_t **st, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
+	(void) line_number;
 }

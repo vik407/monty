@@ -10,6 +10,7 @@ char *read_file(char *filename)
 	char *buff, *opcode = NULL, *args;
 	stack_t *stack = NULL;
 	size_t buffsize = 1024;
+	void (*f)(stack_t **, unsigned int);
 
 	buff = malloc(sizeof(char)* buffsize);
 	/*TODO Malloc validate null*/ 
@@ -28,14 +29,16 @@ char *read_file(char *filename)
 		if(opcode)
 		{
 			if(strcmp(opcode, "push") == 0)
-			{
 				push(args, &stack);
+			else
+			{
+				f = opcode_handler(opcode);
+				f(&stack, (unsigned int) line);
 			}
-			/*	opcode_handler(opcode);*/
 		}
 	}
-	pall(&stack);
-	(void)args;
-	(void)stack;
+	free(args);
+	free(opcode);
+	fclose(fd);
 	return(opcode);
 }

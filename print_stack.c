@@ -13,6 +13,7 @@ void pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", st->n);
 		st = st->next;
 	}
+	(void) line_number;
 }
 /**
  *pint - print top element of the stack
@@ -25,5 +26,6 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	if (st != NULL)
 		printf("%d\n", st->n);
+	(void) line_number;
 }
 

@@ -2,14 +2,13 @@
 /**
  * opcode_handler - read the content of a monty file.
  * @opcode: The file  to a file
- * Return: Always 0.
+ * Return: Opcodes.
  */
-void (*opcode_handler(char *opcode))(stack_t, unsigned int)
+void (*opcode_handler(char *opcode))(stack_t **, unsigned int)
 {
 	int i = 0;
 
 	instruction_t opcodes[] = {
-		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
 		{"swap", swap},
@@ -22,7 +21,7 @@ void (*opcode_handler(char *opcode))(stack_t, unsigned int)
 		{NULL, NULL}
 	};
 
-	while (i < 9)
+	while (opcodes[i].f != NULL)
 	{
 		if (strcmp(opcode, opcodes[i].opcode) == 0)
 		{
