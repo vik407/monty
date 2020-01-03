@@ -10,7 +10,6 @@ char *read_file(char *filename)
 	char *buff, *opcode = NULL, *args;
 	stack_t *stack = NULL;
 	size_t buffsize = 1024;
-	unsigned int line = 0;
 
 	buff = malloc(sizeof(char)* buffsize);
 	/*TODO Malloc validate null*/ 
@@ -20,14 +19,23 @@ char *read_file(char *filename)
 		printf("%s %s\n", "Error: Can't open file", filename);
 		exit(EXIT_FAILURE);
 	}
+	line = 0;
 	while (getline(&buff, &buffsize, fd) != -1)
 	{
 		line++;
 		opcode = strtok(buff, "\n\t\r ");
 		args = strtok(NULL, "\n\t\r ");
 		if(opcode)
-			opcode_handler(opcode);
+		{
+			if(strcmp(opcode, "push") == 0)
+			{
+				push(args, &stack);
+			}
+			/*	opcode_handler(opcode);*/
+		}
 	}
-
+	pall(&stack);
+	(void)args;
+	(void)stack;
 	return(opcode);
 }

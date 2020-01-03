@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+int line;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -38,5 +39,21 @@ typedef struct instruction_s
 
 char *read_file(char *filename);
 void opcode_handler(char *opcode);
+
+/*I/O functions */
+void push(char *arg, stack_t **stack);
+void pop(stack_t **stack, unsigned int line_number);
+
+/*printing functions */
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+
+/*Calculation funcitons */
+void _add(stack_t **stack, unsigned int line_number);
+void _sub(stack_t **stack, unsigned int line_number);
+void _mul(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void _mod(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 
 #endif /*_MONTY_H_*/
