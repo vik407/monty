@@ -15,6 +15,10 @@ int main(void)
 	push(5, &stack);
 	push(6, &stack);
 	push(7, &stack);
+	push(4, &stack);
+	push(5, &stack);
+	push(6, &stack);
+	push(7, &stack);
 	pall(&stack);
 	printf("pall======\n");
 	fflush(stdout);
@@ -40,10 +44,10 @@ int main(void)
 	_mul(&stack);
 	pall(&stack);
 
-	printf("div======\n");
+	/*	printf("div======\n");
 	fflush(stdout);
 	_div(&stack);
-	pall(&stack);
+	pall(&stack);*/
 
 	printf("mod======\n");
 	fflush(stdout);

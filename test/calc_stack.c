@@ -15,7 +15,7 @@ void _add(stack_t **st)
 	}
 	else
 	{
-		printf("L<%d>: can't add st too short\n", __LINE__);
+		printf("L<%d>: can't add stack too short\n", __LINE__);
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
@@ -36,7 +36,7 @@ void _sub(stack_t **st)
 	}
 	else
 	{
-		printf("L<%d>: can't sub st too short\n", __LINE__);
+		printf("L<%d>: can't sub stack too short\n", __LINE__);
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
@@ -63,14 +63,14 @@ void _div(stack_t **st)
 	}
 	else
 	{
-		printf("L<%d>: can't div st too short\n", __LINE__);
+		printf("L<%d>: can't div stack too short\n", __LINE__);
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
 }
 
 /**
-*mul - sum twotop values from the st
+*_mul - sum twotop values from the st
 *@st: pointer to the top element
 *Return: result from the add
  */
@@ -85,7 +85,7 @@ void _mul(stack_t **st)
 	}
 	else
 	{
-		printf("L<%d>: can't mul st too short\n", __LINE__);
+		printf("L<%d>: can't mul stack too short\n", __LINE__);
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
@@ -112,7 +112,7 @@ void _mod(stack_t **st)
 	}
 	else
 	{
-		printf("L<%d>: can'mod st too short\n", __LINE__);
+		printf("L<%d>: can't mod stack too short\n", __LINE__);
 		exit(EXIT_FAILURE);
 	}
 	(void) st;

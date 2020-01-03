@@ -40,6 +40,7 @@ char *read_file(char *filename);
 /*I/O functions */
 stack_t *push(int value, stack_t **stack);
 void pop(stack_t **stack);
+void swap(stack_t **st);
 
 /*printing functions */
 void pall(stack_t **stack);

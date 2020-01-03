@@ -46,3 +46,27 @@ void pop(stack_t **stack)
 		free(st);
 	}
 }
+
+/**
+ *swap - print top element of the stack
+ *@stack: pointer to the top element
+ *Return: void
+ */
+void swap(stack_t **st)
+{
+	int tmp;
+
+	if (*st && (*st)->next)
+        {
+		tmp = (*st)->n;
+                (*st)->n = (*st)->next->n;
+		(*st)->next->n = tmp;
+        }
+        else
+        {
+                printf("L<%d>: can't swap stack too short\n", __LINE__);
+                exit(EXIT_FAILURE);
+        }
+        (void) st;
+
+}
