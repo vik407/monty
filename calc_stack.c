@@ -38,7 +38,7 @@ void _sub(stack_t **st, unsigned int line_number)
 	}
 	else
 	{
-	        exit_failure(st,"L<%d>: can't sub st too short\n");
+		exit_failure(st, "L<%d>: can't sub st too short\n");
 	}
 	(void) st;
 	(void) line_number;
@@ -56,7 +56,7 @@ void _div(stack_t **st, unsigned int line_number)
 	{
 		if ((*st)->n == 0)
 		{
-		        exit_failure(st, "L<%d>: division by zero\n");
+			exit_failure(st, "L<%d>: division by zero\n");
 		}
 		(*st)->next->n = (*st)->next->n / (*st)->n;
 		*st = (*st)->next;
@@ -65,7 +65,7 @@ void _div(stack_t **st, unsigned int line_number)
 	}
 	else
 	{
-	        exit_failure(st, "L<%d>: can't div st too short\n");
+		exit_failure(st, "L<%d>: can't div st too short\n");
 	}
 	(void) st;
 	(void) line_number;
@@ -88,7 +88,7 @@ void _mul(stack_t **st, unsigned int line_number)
 	}
 	else
 	{
-	        exit_failure(st, "L<%d>: can't mul st too short\n");
+		exit_failure(st, "L<%d>: can't mul st too short\n");
 	}
 	(void) st;
 	(void) line_number;
@@ -115,7 +115,7 @@ void _mod(stack_t **st, unsigned int line_number)
 	}
 	else
 	{
-	        exit_failure(st, "L<%d>: can'mod st too short\n");
+		exit_failure(st, "L<%d>: can'mod st too short\n");
 	}
 	(void) st;
 	(void) line_number;

@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- *free - check the code for Holberton School students.
+ *free_stack - check the code for Holberton School students.
  *@st: stack to be freed
  * Return: Always 0.
  */

@@ -18,8 +18,7 @@ char *read_file(char *filename)
 		/*TODO Malloc validate null*/
 	fd = fopen(filename, "r");
 	if (fd == NULL)
-	{
-		free(buff);
+	{	free(buff);
 		free_stack(&stack);
 		if (fd)
 			fclose(fd);
@@ -36,11 +35,9 @@ char *read_file(char *filename)
 			if (strcmp(opcode, "push") == 0)
 				push(args, &stack);
 			else
-			{
-				f = opcode_handler(opcode);
+			{	f = opcode_handler(opcode);
 				if (f)
-				{
-					line++;
+				{	line++;
 					f(&stack, (unsigned int) line);
 				}
 			}
