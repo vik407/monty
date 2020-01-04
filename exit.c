@@ -7,13 +7,13 @@
  */
 void exit_failure(stack_t **st, const char *mess)
 {
-	fprintf(stderr, mess, line);
+	fprintf(stderr, mess, m_var.line);
 	if (*st)
 		free_stack(st);
-	if (buff)
+	if (m_var.buff)
 	{
-		free(buff);
+		free(m_var.buff);
 	}
-	fclose(fd);
+	fclose(m_var.fd);
 	exit(EXIT_FAILURE);
 }

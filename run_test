@@ -1,11 +1,11 @@
 #!/bin/bash
 echo -e "\033[32mInitializing test\033[0m"
-ls "bytecodes/" |
+ls "bytecodes/bc/" |
     while read file
     do
 	echo -e "\n================\n\033[36mTesting ${file}\033[0m"
 	echo "output: "
-	./monty "bytecodes/${file}" 2> err
+	./monty "bytecodes/bc/${file}" 2> err
 	echo "exit code " $?
 	chars=$(wc -c err | cut -d" " -f1)
 	if [[ $chars != 0 ]]

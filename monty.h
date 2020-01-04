@@ -9,10 +9,22 @@
 #include <fcntl.h>
 #include <stdbool.h>
 
-int line;
-char *buff;
-FILE *fd;
-char *arg;
+/**
+ * struct monty_s - Monty global variables used
+ * @line: Integer number of line
+ * @buff: The file content
+ * @fd: The file
+ * @arg: The args
+ */
+typedef struct monty_s
+{
+	int line;
+	char *buff;
+	FILE *fd;
+	char *arg;
+} monty_t;
+
+monty_t m_var;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

@@ -11,39 +11,39 @@ char *read_file(char *filename)
 	size_t buffsize = 1024;
 	void (*f)(stack_t **, unsigned int);
 
-	buff = NULL, arg = NULL;
-	buff = malloc(sizeof(char) * buffsize);
-	if (buff == NULL)
+	m_var.buff = NULL, m_var.arg = NULL;
+	m_var.buff = malloc(sizeof(char) * buffsize);
+	if (m_var.buff == NULL)
 	{	fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 		/*TODO Malloc validate null*/
-	fd = fopen(filename, "r");
-	if (fd == NULL)
-	{	free(buff);
+	m_var.fd = fopen(filename, "r");
+	if (m_var.fd == NULL)
+	{	free(m_var.buff);
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	line = 0;
-	while (getline(&buff, &buffsize, fd) != -1)
-	{	line++;
-		opcode = strtok(buff, "\n\t\r "), arg = strtok(NULL, "\n\t\r ");
+	m_var.line = 0;
+	while (getline(&m_var.buff, &buffsize, m_var.fd) != -1)
+	{	m_var.line++;
+		opcode = strtok(m_var.buff, "\n\t\r "), m_var.arg = strtok(NULL, "\n\t\r ");
 		if (opcode)
 		{	f = opcode_handler(opcode);
 			if (f)
-				f(&stack, (unsigned int) line);
+				f(&stack, (unsigned int) m_var.line);
 			else
-			{	fprintf(stderr, "L%d: unknown instruction %s\n", line, opcode);
+			{	fprintf(stderr, "L%d: unknown instruction %s\n", m_var.line, opcode);
 				free_stack(&stack);
-				free(buff);
-				fclose(fd);
+				free(m_var.buff);
+				fclose(m_var.fd);
 				exit(EXIT_FAILURE);
 			}
 		}
 	}
-	free(buff);
-	fclose(fd);
+	free(m_var.buff);
+	fclose(m_var.fd);
 	free_stack(&stack);
-	(void) arg;
+	(void) m_var.arg;
 	return (opcode);
 }

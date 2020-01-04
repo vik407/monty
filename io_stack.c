@@ -35,13 +35,13 @@ void push(stack_t **stack, unsigned int line_number)
 	int value;
 	bool failed;
 
-	if (arg)
+	if (m_var.arg)
 	{
-		failed = is_dig(arg) ? true : false;
+		failed = is_dig(m_var.arg) ? true : false;
 		if (!failed)
 			exit_failure(stack, "L%d: usage: push integer\n");
 		else
-			value = atoi(arg);
+			value = atoi(m_var.arg);
 	}
 	else
 	{
