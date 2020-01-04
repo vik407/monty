@@ -87,6 +87,8 @@ void pop(stack_t **stack, unsigned int line_number)
 			st->next->prev = NULL;
 		*stack = st->next;
 		free(st);
+	} else
+	{	exit_failure(stack, "L%d: can't pop an empty stack\n");
 	}
 	(void) line_number;
 }
