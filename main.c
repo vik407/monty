@@ -16,5 +16,5 @@ int main(int argc, char *argv[])
 	}
 	content = read_file(argv[1]);
 	(void)content;
-	return (0);
+	return (EXIT_SUCCESS);
 }
