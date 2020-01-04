@@ -13,8 +13,7 @@ int is_dig(char *argu)
 		if (argu[pos] >= 48 && argu[pos] <= 57)
 		{
 			pos++;
-		}
-		else
+		} else
 		{
 			return (0);
 		}
@@ -39,9 +38,12 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		failed = is_dig(m_var.arg) ? true : false;
 		if (!failed)
+		{
 			exit_failure(stack, "L%d: usage: push integer\n");
-		else
+		} else
+		{
 			value = atoi(m_var.arg);
+		}
 	}
 	else
 	{

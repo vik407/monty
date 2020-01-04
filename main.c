@@ -15,6 +15,6 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	content = read_file(argv[1]);
-	(void)content;
+
 	return (EXIT_SUCCESS);
 }
