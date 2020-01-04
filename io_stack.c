@@ -13,7 +13,7 @@ int is_dig(char *argu)
 
 	while (argu[pos] != '\0')
 	{
-		if (argu[pos] >= 48 && argu[pos] <= 57 || argu[pos] == '-')
+		if ((argu[pos] >= 48 && argu[pos] <= 57) || argu[pos] == '-')
 		{
 			pos++;
 		} else
