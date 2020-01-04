@@ -7,15 +7,10 @@
  */
 int main(int argc, char *argv[])
 {
-	char *content;
-
 	if (argc != 2)
-	{
-		printf("%s\n", "USAGE: monty file");
+	{	printf("%s\n", "USAGE: monty file");
 		exit(EXIT_FAILURE);
 	}
-	content = read_file(argv[1]);
-	(void) content;
-
+	read_file(argv[1]);
 	return (EXIT_SUCCESS);
 }

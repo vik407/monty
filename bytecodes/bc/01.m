@@ -1,5 +1,15 @@
-push 3
+
+
+
+
+
+
+    
+
+           
+
 push 2
 pall
+onto
 sub
      pall

@@ -78,5 +78,5 @@ void swap(stack_t **stack, unsigned int line_number);
 
 void exit_failure(stack_t **st, const char *mess);
 void free_stack(stack_t **st);
-
+void free_all(stack_t **st);
 #endif /*_MONTY_H_*/

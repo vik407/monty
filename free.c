@@ -16,3 +16,12 @@ void free_stack(stack_t **st)
 	}
 
 }
+
+void free_all(stack_t **stack)
+{
+	free_stack(stack);
+	if (m_var.buff)
+		free(m_var.buff);
+	if (m_var.fd)
+		fclose(m_var.fd);
+}
