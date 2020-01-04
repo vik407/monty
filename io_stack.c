@@ -1,7 +1,7 @@
 #include "monty.h"
 /**
 *push - push value to the stack
-*@value: value to be pushed
+*@arg: value to be pushed
 *@stack: pointer to the top element
 *Return: void
  */
@@ -39,6 +39,7 @@ void push(char *arg, stack_t **stack)
 /**
  *pop - print top element of the stack
  *@stack: pointer to the top element
+ *@line_number: the line
  *Return: void
  */
 void pop(stack_t **stack, unsigned int line_number)
@@ -56,8 +57,9 @@ void pop(stack_t **stack, unsigned int line_number)
 }
 /**
  *swap - print top element of the stack
- *@stack: pointer to the top element
- *Return: void 
+ *@st: pointer to the top element
+ *@line_number: the line
+ *Return: void
  */
 void swap(stack_t **st, unsigned int line_number)
 {

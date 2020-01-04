@@ -1,7 +1,7 @@
 #include "monty.h"
 /**
  * read_file - read the content of a monty file.
- * @fd: The file  to a file
+ * @filename: The file  to a file
  * Return: Always 0.
  */
 char *read_file(char *filename)
@@ -12,8 +12,10 @@ char *read_file(char *filename)
 	size_t buffsize = 1024;
 	void (*f)(stack_t **, unsigned int);
 
-	buff = malloc(sizeof(char)* buffsize);
-	/*TODO Malloc validate null*/ 
+	buff = malloc(sizeof(char) * buffsize);
+	if (buff == NULL)
+		exit_failure(stack, "Error: malloc failed\n");
+		/*TODO Malloc validate null*/
 	fd = fopen(filename, "r");
 	if (fd == NULL)
 	{
@@ -23,22 +25,23 @@ char *read_file(char *filename)
 	line = 0;
 	while (getline(&buff, &buffsize, fd) != -1)
 	{
-		line++;
 		opcode = strtok(buff, "\n\t\r ");
 		args = strtok(NULL, "\n\t\r ");
-		if(opcode)
+		if (opcode)
 		{
-			if(strcmp(opcode, "push") == 0)
+			if (strcmp(opcode, "push") == 0)
 				push(args, &stack);
 			else
 			{
 				f = opcode_handler(opcode);
-				f(&stack, (unsigned int) line);
+				if (f)
+				{
+					line++;
+					f(&stack, (unsigned int) line);
+				}
 			}
 		}
 	}
-	free(args);
-	free(opcode);
 	fclose(fd);
-	return(opcode);
+	return (opcode);
 }

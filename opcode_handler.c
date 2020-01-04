@@ -18,6 +18,8 @@ void (*opcode_handler(char *opcode))(stack_t **, unsigned int)
 		{"div", _div},
 		{"mod", _mod},
 		{"mul", _mul},
+		{"pchar", pchar},
+		{"pstr", pstr},
 		{NULL, NULL}
 	};
 
@@ -27,6 +29,7 @@ void (*opcode_handler(char *opcode))(stack_t **, unsigned int)
 		{
 			return (opcodes[i].f);
 		}
+		i++;
 	}
 	return (NULL);
 }

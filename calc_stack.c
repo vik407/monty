@@ -2,6 +2,7 @@
 /**
 *_add - sum twotop values from the st
 *@st: pointer to the top element
+*@line_number: the line
 *Return: result from the add
  */
 void _add(stack_t **st, unsigned int line_number)
@@ -24,6 +25,7 @@ void _add(stack_t **st, unsigned int line_number)
 /**
 *_sub - sum twotop values from the st
 *@st: pointer to the top element
+*@line_number: the line
 *Return: result from the add
  */
 void _sub(stack_t **st, unsigned int line_number)
@@ -47,6 +49,7 @@ void _sub(stack_t **st, unsigned int line_number)
 /**
 *_div - sum twotop values from the st
 *@st: pointer to the top element
+*@line_number: the line
 *Return: result from the add
  */
 void _div(stack_t **st, unsigned int line_number)
@@ -73,8 +76,9 @@ void _div(stack_t **st, unsigned int line_number)
 }
 
 /**
-*mul - sum twotop values from the st
+*_mul - sum twotop values from the st
 *@st: pointer to the top element
+*@line_number: the line
 *Return: result from the add
  */
 void _mul(stack_t **st, unsigned int line_number)
@@ -98,6 +102,7 @@ void _mul(stack_t **st, unsigned int line_number)
 /**
 *_mod - sum twotop values from the st
 *@st: pointer to the top element
+*@line_number: the line
 *Return: result from the add
  */
 void _mod(stack_t **st, unsigned int line_number)

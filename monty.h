@@ -47,6 +47,8 @@ void pop(stack_t **stack, unsigned int line_number);
 /*printing functions */
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
 
 /*Calculation funcitons */
 void _add(stack_t **stack, unsigned int line_number);
@@ -55,5 +57,7 @@ void _mul(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
+
+void exit_failure(stack_t **st, char *mess);
 
 #endif /*_MONTY_H_*/
