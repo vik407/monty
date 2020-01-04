@@ -110,7 +110,7 @@ void swap(stack_t **st, unsigned int line_number)
 	}
 	else
 	{
-		exit_failure(st, "L%d: can't swap stack too short\n");
+		exit_failure(st, "L%d: can't swap, stack too short\n");
 	}
 	(void) st;
 	(void) line_number;
