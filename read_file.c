@@ -43,6 +43,7 @@ char *read_file(char *filename)
 			}
 		}
 	}
+	free(buff);
 	fclose(fd);
 	free_stack(&stack);
 	return (opcode);
