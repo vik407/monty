@@ -14,7 +14,7 @@ char *read_file(char *filename)
 
 	buff = malloc(sizeof(char) * buffsize);
 	if (buff == NULL)
-		exit_failure(stack, "Error: malloc failed\n");
+		exit_failure(&stack, "Error: malloc failed\n");
 		/*TODO Malloc validate null*/
 	fd = fopen(filename, "r");
 	if (fd == NULL)

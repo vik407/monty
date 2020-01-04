@@ -16,7 +16,7 @@ void _add(stack_t **st, unsigned int line_number)
 	}
 	else
 	{
-		printf("L<%d>: can't add st too short\n", __LINE__);
+		printf("L<%d>: can't add st too short\n", line);
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
@@ -39,7 +39,7 @@ void _sub(stack_t **st, unsigned int line_number)
 	}
 	else
 	{
-		printf("L<%d>: can't sub st too short\n", __LINE__);
+		printf("L<%d>: can't sub st too short\n", line);
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
@@ -58,7 +58,7 @@ void _div(stack_t **st, unsigned int line_number)
 	{
 		if ((*st)->n == 0)
 		{
-			printf("L<%d>: division by zero\n", __LINE__);
+			printf("L<%d>: division by zero\n", line);
 			exit(EXIT_FAILURE);
 		}
 		(*st)->next->n = (*st)->next->n / (*st)->n;
@@ -68,7 +68,7 @@ void _div(stack_t **st, unsigned int line_number)
 	}
 	else
 	{
-		printf("L<%d>: can't div st too short\n", __LINE__);
+		printf("L<%d>: can't div st too short\n", line);
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
@@ -92,7 +92,7 @@ void _mul(stack_t **st, unsigned int line_number)
 	}
 	else
 	{
-		printf("L<%d>: can't mul st too short\n", __LINE__);
+		printf("L<%d>: can't mul st too short\n", line);
 		exit(EXIT_FAILURE);
 	}
 	(void) st;
@@ -111,7 +111,7 @@ void _mod(stack_t **st, unsigned int line_number)
 	{
 		if ((*st)->n == 0)
 		{
-			printf("L<%d>: division by zero\n", __LINE__);
+			printf("L<%d>: division by zero\n", line);
 			exit(EXIT_FAILURE);
 		}
 		(*st)->next->n = (*st)->next->n % (*st)->n;
@@ -121,7 +121,7 @@ void _mod(stack_t **st, unsigned int line_number)
 	}
 	else
 	{
-		printf("L<%d>: can'mod st too short\n", __LINE__);
+		printf("L<%d>: can'mod st too short\n", line);
 		exit(EXIT_FAILURE);
 	}
 	(void) st;

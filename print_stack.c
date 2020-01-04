@@ -41,17 +41,24 @@ void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *st = *stack;
 
-	while (st != NULL)
+	if (!(*stack))
 	{
-		if (st->n >= 33 && st->n <= 127)
-			printf("%c\n", st->n);
-		else
-		{
-			exit_failure(stack, "can't pchar, value out of range\n");
-		}
-		st = st->next;
+		printf("\n");
 	}
-	(void) line_number;
+	else
+	{
+		while (st != NULL)
+		{
+			if (st->n >= 33 && st->n <= 127)
+				printf("%c\n", st->n);
+			else
+			{
+				return;
+			}
+			st = st->next;
+		}
+		(void) line_number;
+	}
 }
 /**
  *pchar - print top element of the stack
