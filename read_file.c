@@ -27,8 +27,7 @@ char *read_file(char *filename)
 	line = 0;
 	while (getline(&buff, &buffsize, fd) != -1)
 	{	line++;
-		opcode = strtok(buff, "\n\t\r ");
-		arg = strtok(NULL, "\n\t\r ");
+		opcode = strtok(buff, "\n\t\r "), arg = strtok(NULL, "\n\t\r ");
 		if (opcode)
 		{	f = opcode_handler(opcode);
 			if (f)
@@ -38,6 +37,7 @@ char *read_file(char *filename)
 				free_stack(&stack);
 				free(buff);
 				fclose(fd);
+				exit(EXIT_FAILURE);
 			}
 		}
 	}
