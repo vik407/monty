@@ -28,7 +28,8 @@ char *read_file(char *filename)
 	m_var.line = 0;
 	while (getline(&m_var.buff, &buffsize, m_var.fd) != -1)
 	{	m_var.line++;
-		opcode = strtok(m_var.buff, "\v\f\n\t\r "), m_var.arg = strtok(NULL, "\v\f\n\t\r ");
+		opcode = strtok(m_var.buff, "\v\f\n\t\r ");
+		m_var.arg = strtok(NULL, "\v\f\n\t\r ");
 		if (opcode)
 		{	f = opcode_handler(opcode);
 			if (f)
