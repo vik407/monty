@@ -8,6 +8,9 @@ int is_dig(char *argu)
 {
 	int pos = 0;
 
+	if (argu == NULL)
+		return (0);
+
 	while (argu[pos] != '\0')
 	{
 		if (argu[pos] >= 48 && argu[pos] <= 57)
