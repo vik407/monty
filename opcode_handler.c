@@ -9,6 +9,7 @@ void (*opcode_handler(char *opcode))(stack_t **, unsigned int)
 	int i = 0;
 
 	instruction_t opcodes[] = {
+		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
 		{"swap", swap},

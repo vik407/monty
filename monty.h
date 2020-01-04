@@ -11,6 +11,7 @@
 int line;
 char *buff;
 FILE *fd;
+char *arg;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -44,7 +45,7 @@ char *read_file(char *filename);
 void (*opcode_handler(char *opcode))(stack_t **, unsigned int);
 
 /*I/O functions */
-void push(char *arg, stack_t **stack);
+void push(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 
 /*printing functions */

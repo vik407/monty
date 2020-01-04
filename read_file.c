@@ -6,7 +6,7 @@
  */
 char *read_file(char *filename)
 {
-	char *opcode = NULL, *args;
+	char *opcode = NULL, *arg = NULL;
 	stack_t *stack = NULL;
 	size_t buffsize = 1024;
 	void (*f)(stack_t **, unsigned int);
@@ -28,23 +28,21 @@ char *read_file(char *filename)
 	line = 0;
 	while (getline(&buff, &buffsize, fd) != -1)
 	{
+		line++;
 		opcode = strtok(buff, "\n\t\r ");
-		args = strtok(NULL, "\n\t\r ");
+		arg = strtok(NULL, "\n\t\r ");
 		if (opcode)
 		{
-			if (strcmp(opcode, "push") == 0)
-				push(args, &stack);
-			else
-			{	f = opcode_handler(opcode);
-				if (f)
-				{	line++;
-					f(&stack, (unsigned int) line);
-				}
+			f = opcode_handler(opcode);
+			if (f)
+			{
+				f(&stack, (unsigned int) line);
 			}
 		}
 	}
 	free(buff);
 	fclose(fd);
 	free_stack(&stack);
+	(void) arg;
 	return (opcode);
 }

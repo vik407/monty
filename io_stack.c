@@ -1,16 +1,16 @@
 #include "monty.h"
 /**
 *is_dig - push value to the stack
-*@arg: value to be pushed
+*@argu: value to be pushed
 *Return: void
  */
-int is_dig(char *arg)
+int is_dig(char *argu)
 {
 	int pos = 0;
 
-	while (arg[pos] != '\0')
+	while (argu[pos] != '\0')
 	{
-		if (arg[pos] >= 48 && arg[pos] <= 57)
+		if (argu[pos] >= 48 && argu[pos] <= 57)
 		{
 			pos++;
 		}
@@ -24,11 +24,11 @@ int is_dig(char *arg)
 
 /**
 *push - push value to the stack
-*@arg: value to be pushed
 *@stack: pointer to the top element
+*@line_number: pointer to the top element
 *Return: void
  */
-void push(char *arg, stack_t **stack)
+void push(stack_t **stack, unsigned int line_number)
 {
 	/*printf("%d\n", value);*/
 	stack_t *stack_new;
@@ -50,7 +50,7 @@ void push(char *arg, stack_t **stack)
 	stack_new = malloc(sizeof(stack_t));
 	if (!stack_new)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	stack_new->prev = NULL;
@@ -63,6 +63,7 @@ void push(char *arg, stack_t **stack)
 		(*stack)->prev = stack_new;
 		*stack = stack_new;
 	}
+	(void) line_number;
 }
 
 /**
