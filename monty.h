@@ -8,10 +8,12 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdbool.h>
+
 int line;
 char *buff;
 FILE *fd;
 char *arg;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer

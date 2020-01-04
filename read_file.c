@@ -6,12 +6,13 @@
  */
 char *read_file(char *filename)
 {
-	char *opcode = NULL, *arg = NULL;
+	char *opcode = NULL;
 	stack_t *stack = NULL;
 	size_t buffsize = 1024;
 	void (*f)(stack_t **, unsigned int);
 
 	buff = NULL;
+	arg = NULL;
 	buff = malloc(sizeof(char) * buffsize);
 	if (buff == NULL)
 		exit_failure(&stack, "Error: malloc failed\n");
@@ -32,8 +33,7 @@ char *read_file(char *filename)
 		opcode = strtok(buff, "\n\t\r ");
 		arg = strtok(NULL, "\n\t\r ");
 		if (opcode)
-		{
-			f = opcode_handler(opcode);
+		{	f = opcode_handler(opcode);
 			if (f)
 			{
 				f(&stack, (unsigned int) line);
