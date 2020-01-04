@@ -1,5 +1,28 @@
 #include "monty.h"
 /**
+*is_dig - push value to the stack
+*@arg: value to be pushed
+*Return: void
+ */
+int is_dig(char *arg)
+{
+	int pos = 0;
+
+	while (arg[pos] != '\0')
+	{
+		if (arg[pos] >= 48 && arg[pos] <= 57)
+		{
+			pos++;
+		}
+		else
+		{
+			return (0);
+		}
+	}
+	return (1);
+}
+
+/**
 *push - push value to the stack
 *@arg: value to be pushed
 *@stack: pointer to the top element
@@ -10,13 +33,19 @@ void push(char *arg, stack_t **stack)
 	/*printf("%d\n", value);*/
 	stack_t *stack_new;
 	int value;
+	bool failed;
 
 	if (arg)
-		value = atoi(arg);
+	{
+		failed = is_dig(arg) ? true : false;
+		if (!failed)
+			exit_failure(stack, "L%d: usage: push integer\n");
+		else
+			value = atoi(arg);
+	}
 	else
 	{
-		printf("L<%d>: Error\n", line);
-		exit(EXIT_FAILURE);
+		exit_failure(stack, "L%d: usage: push integer\n");
 	}
 	stack_new = malloc(sizeof(stack_t));
 	if (!stack_new)
@@ -73,8 +102,7 @@ void swap(stack_t **st, unsigned int line_number)
 	}
 	else
 	{
-		printf("L<%d>: can't swap stack too short\n", __LINE__);
-		exit(EXIT_FAILURE);
+		exit_failure(st, "L%d: can't swap stack too short\n");
 	}
 	(void) st;
 	(void) line_number;
