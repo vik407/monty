@@ -5,9 +5,15 @@
  *@mess: out message
  * Return: Always 0.
  */
-void exit_failure(stack_t **st, char *mess)
+void exit_failure(stack_t **st, const char *mess)
 {
-	(void) st;
-	printf("%s", mess);
+	fprintf(stderr, mess, line);
+	if (*st)
+		free_stack(st);
+	if (buff)
+	{
+		free(buff);
+	}
+	fclose(fd);
 	exit(EXIT_FAILURE);
 }

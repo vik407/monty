@@ -6,6 +6,7 @@
  */
 char *read_file(char *filename)
 {
+	FILE *fd;
 	char *opcode = NULL, *args;
 	stack_t *stack = NULL;
 	size_t buffsize = 1024;
@@ -19,12 +20,8 @@ char *read_file(char *filename)
 	fd = fopen(filename, "r");
 	if (fd == NULL)
 	{
-		free(buff);
-		free_stack(&stack);
-		if (fd)
-			fclose(fd);
 		printf("%s %s\n", "Error: Can't open file", filename);
-		exit(EXIT_FAILURE);
+		exit_failure(EXIT_FAILURE);
 	}
 	line = 0;
 	while (getline(&buff, &buffsize, fd) != -1)
@@ -47,6 +44,5 @@ char *read_file(char *filename)
 		}
 	}
 	fclose(fd);
-	free_stack(&stack);
 	return (opcode);
 }

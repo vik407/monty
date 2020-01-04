@@ -8,6 +8,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 int line;
+char *buff;
+FILE *fd;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -58,6 +60,7 @@ void _div(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 
-void exit_failure(stack_t **st, char *mess);
+void exit_failure(stack_t **st, const char *mess);
+void free_stack(stack_t **st);
 
 #endif /*_MONTY_H_*/
