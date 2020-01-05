@@ -38,7 +38,7 @@ char *read_file(char *filename)
 	stack_t *stack = NULL;
 
 	s = stat(filename, &st);
-	if (s == 1)
+	if (s == 0)
 	{
 		if ((st.st_mode & S_IFMT) != S_IFREG || !is_amonty_file(filename))
 			cant_open_file(filename, &stack);
