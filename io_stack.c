@@ -116,3 +116,14 @@ void swap(stack_t **st, unsigned int line_number)
 	(void) line_number;
 
 }
+/**
+ *nop - The opcode nop doesn’t do anything.
+ *@st: pointer to the top element
+ *@line_number: the line
+ *Return: void
+ */
+void nop(stack_t **st, unsigned int line_number)
+{
+	(void) st;
+	(void) line_number;
+}

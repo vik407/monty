@@ -18,7 +18,7 @@ char *read_file(char *filename)
 		free_all(&stack);
 		exit(EXIT_FAILURE);
 	}
-		/*TODO Malloc validate null*/
+
 	m_var.fd = fopen(filename, "r");
 	if (m_var.fd == NULL)
 	{	fprintf(stderr, "Error: Can't open file %s\n", filename);
