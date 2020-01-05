@@ -61,6 +61,7 @@ void (*opcode_handler(char *opcode))(stack_t **, unsigned int);
 /*I/O functions */
 void push(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 
 /*printing functions */
 void pall(stack_t **stack, unsigned int line_number);
@@ -76,6 +77,9 @@ void _div(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void nop(stack_t **st, unsigned int line_number);
+
+/*Rotate functions*/
+void rotl(stack_t **stack, unsigned int line_number);
 
 void exit_failure(stack_t **st, const char *mess);
 void free_stack(stack_t **st);

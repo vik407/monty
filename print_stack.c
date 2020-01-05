@@ -53,14 +53,16 @@ void pstr(stack_t **stack, unsigned int line_number)
 	{
 		while (st != NULL)
 		{
-			if (st->n >= 33 && st->n <= 127)
-				printf("%c\n", st->n);
+			if (st->n >= 32 && st->n <= 126)
+				printf("%c", st->n);
 			else
 			{
-				return;
+				break;
 			}
 			st = st->next;
 		}
+		printf("\n");
+		fflush(stdout);
 		(void) line_number;
 	}
 }
@@ -76,7 +78,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	if (st != NULL)
 	{
-		if (st->n >= 33 && st->n <= 127)
+		if (st->n >= 32 && st->n <= 126)
 			printf("%c\n", st->n);
 		else
 		{

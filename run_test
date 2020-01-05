@@ -1,15 +1,36 @@
 #!/bin/bash
-echo -e "\033[32mInitializing test\033[0m"
-ls "bytecodes/bc/" |
+
+run_unit_test()
+{
+    file="$1"
+    echo -e "\n================\n\033[36mTesting ${file}\033[0m"
+    echo "output: "
+    ./monty "bytecodes/${file}" 2> err
+    echo "exit code " $?
+    echo "===="
+    chars=$(wc -c err | cut -d" " -f1)
+    if [[ $chars != 0 ]]
+    then
+	echo -e "\033[31mError Output $(cat err)\033[0m"
+    fi
+
+}
+
+
+echo $1
+if [[ $1 ]]
+then
+    echo -e "Runing unit test to $1:\nselect file\n========="
+    ls bytecodes
+    echo "========="
+    read file
+    run_unit_test $file
+else
+    echo -e "\033[32mInitializing test\033[0m"
+ls "bytecodes/" |
     while read file
     do
-	echo -e "\n================\n\033[36mTesting ${file}\033[0m"
-	echo "output: "
-	./monty "bytecodes/bc/${file}" 2> err
-	echo "exit code " $?
-	chars=$(wc -c err | cut -d" " -f1)
-	if [[ $chars != 0 ]]
-	then
-	    echo -e "\033[31mError Output $(cat err)\033[0m"
-	fi
+	run_unit_test $file
     done
+
+fi
