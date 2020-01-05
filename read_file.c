@@ -1,4 +1,5 @@
 #include "monty.h"
+void read_line(stack_t **stack);
 /**
  * is_amonty_file - read the content of a monty file.
  * @filename: The file  to a file
@@ -32,26 +33,45 @@ void cant_open_file(char *filename, stack_t **stack)
  */
 char *read_file(char *filename)
 {
-	char *opcode = NULL;
-	stack_t *stack = NULL;
-	size_t buffsize = 1024;
 	struct stat st;
+	int s;
+	stack_t *stack = NULL;
+
+	s = stat(filename, &st);
+	if (s == 1)
+	{
+		if ((st.st_mode & S_IFMT) != S_IFREG || !is_amonty_file(filename))
+			cant_open_file(filename, &stack);
+	} else
+	{ cant_open_file(filename, &stack);
+	}
+	m_var.fd = fopen(filename, "r");
+	if (m_var.fd == NULL)
+		cant_open_file(filename, &stack);
+	m_var.line = 0;
+	read_line(&stack);
+
+	free_all(&stack);
+	return ("Success");
+}
+/**
+ * read_line - read the content of line.
+ * @stack: The stack to work
+ * Return: void.
+ */
+void read_line(stack_t **stack)
+{
+	char *opcode = NULL;
+	size_t buffsize = 1024;
 	void (*f)(stack_t **, unsigned int);
 
 	m_var.buff = NULL, m_var.arg = NULL;
 	m_var.buff = malloc(sizeof(char) * buffsize);
 	if (m_var.buff == NULL)
 	{	fprintf(stderr, "Error: malloc failed\n");
-		free_all(&stack);
+		free_all(stack);
 		exit(EXIT_FAILURE);
 	}
-	stat(filename, &st);
-	if ((st.st_mode & S_IFMT) != S_IFREG || !is_amonty_file(filename))
-		cant_open_file(filename, &stack);
-	m_var.fd = fopen(filename, "r");
-	if (m_var.fd == NULL)
-		cant_open_file(filename, &stack);
-	m_var.line = 0;
 	while (getline(&m_var.buff, &buffsize, m_var.fd) != -1)
 	{	m_var.line++;
 		opcode = strtok(m_var.buff, "\v\f\n\t\r ");
@@ -59,16 +79,14 @@ char *read_file(char *filename)
 		if (opcode)
 		{	f = opcode_handler(opcode);
 			if (f)
-				f(&stack, (unsigned int) m_var.line);
+				f(stack, (unsigned int) m_var.line);
 			else
 			{	fprintf(stderr, "L%d: unknown instruction %s\n", m_var.line, opcode);
-				free_all(&stack);
+				free_all(stack);
 				exit(EXIT_FAILURE);
 			}
 		}
 	}
-	free(m_var.buff);
-	fclose(m_var.fd);
-	free_stack(&stack);
-	return (opcode);
 }
+
+
