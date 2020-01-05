@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
-	{	printf("%s\n", "USAGE: monty file");
+	{	fprintf(stderr, "%s\n", "USAGE: monty file");
 		exit(EXIT_FAILURE);
 	}
 	read_file(argv[1]);

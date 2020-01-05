@@ -1,4 +1,4 @@
-pall
-push 0
-push 12
-push 16
+push 1$
+push 2$
+push 3$
+pall$
