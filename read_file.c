@@ -66,6 +66,7 @@ void read_line(stack_t **stack)
 	size_t buffsize = 1024;
 	void (*f)(stack_t **, unsigned int);
 	char *str = NULL;
+	int check_comm = 0;
 
 	m_var.buff = NULL, m_var.arg = NULL;
 	m_var.buff = malloc(sizeof(char) * buffsize);
@@ -77,7 +78,16 @@ void read_line(stack_t **stack)
 	while (getline(&m_var.buff, &buffsize, m_var.fd) != -1)
 	{	m_var.line++;
 		str = m_var.buff;
-		if (str[0] != '#')
+		check_comm = 0;
+		while (*str != '\0')
+		{
+			if (*str == '#')
+			{	check_comm = 1;
+				break;
+			}
+			str++;
+		}
+		if (check_comm != 1)
 		{
 			opcode = strtok(m_var.buff, "\v\f\n\t\r ");
 			m_var.arg = strtok(NULL, "\v\f\n\t\r ");
