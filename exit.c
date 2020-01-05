@@ -8,12 +8,6 @@
 void exit_failure(stack_t **st, const char *mess)
 {
 	fprintf(stderr, mess, m_var.line);
-	if (*st)
-		free_stack(st);
-	if (m_var.buff)
-	{
-		free(m_var.buff);
-	}
-	fclose(m_var.fd);
+	free_all(st);
 	exit(EXIT_FAILURE);
 }

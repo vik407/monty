@@ -32,7 +32,6 @@ int is_dig(char *argu)
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	/*printf("%d\n", value);*/
 	stack_t *stack_new;
 	int value;
 	bool failed;

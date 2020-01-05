@@ -16,7 +16,11 @@ void free_stack(stack_t **st)
 	}
 
 }
-
+/**
+ *free_all - Free all the project vars used.
+ *@stack: stack to be freed
+ * Return: void
+ */
 void free_all(stack_t **stack)
 {
 	free_stack(stack);
