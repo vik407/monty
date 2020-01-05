@@ -12,6 +12,7 @@ void (*opcode_handler(char *opcode))(stack_t **, unsigned int)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"nop", nop},
 		{"swap", swap},
 		{"pop", pop},
 		{"add", _add},
@@ -21,6 +22,7 @@ void (*opcode_handler(char *opcode))(stack_t **, unsigned int)
 		{"mul", _mul},
 		{"pchar", pchar},
 		{"pstr", pstr},
+		{"rotl", rotl},
 		{NULL, NULL}
 	};
 

@@ -1,0 +1,46 @@
+#include "monty.h"
+/**
+ *rotl - check the code for Holberton School students.
+ *@st: stack to be freed
+ *@line_number: line number
+ * Return: Always 0.
+ */
+void rotl(stack_t **st, unsigned int line_number)
+{
+	stack_t *next = *st;
+	int tmp, tmp2;
+
+	if (next)
+	{
+		tmp = next->n;
+	}
+	while (next)
+	{
+		if (!next->next)
+		{
+			tmp2 = next->n;
+			next->n = tmp;
+		}
+		next = next->next;
+	}
+	(*st)->n = tmp2;
+	(void) line_number;
+}
+/**
+ *rotr - check the code for Holberton School students.
+ *@st: stack to be freed
+ *@line_number: line number
+ * Return: Always 0.
+ */
+void rotr(stack_t **st, unsigned int line_number)
+{
+	stack_t *next = *st;
+
+	while (next)
+	{
+		next = (*st)->next;
+		free(*st);
+		*st = next;
+	}
+	(void) line_number;
+}
