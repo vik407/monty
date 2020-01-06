@@ -24,7 +24,7 @@ void cant_open_file(char *filename, stack_t **stack)
 {
 	fprintf(stderr, "Error: Can't open file %s\n", filename);
 	free_all(stack);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 /**
  * read_file - read the content of a monty file.
