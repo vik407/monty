@@ -7,26 +7,24 @@
  */
 void rotl(stack_t **st, unsigned int line_number)
 {
-	stack_t *next = *st, *top;
+	stack_t *next = *st, *top = *st;
 
-	if (!st || !(*st) || next->next == NULL)
-		return;
-
-	top = next->next;
-	top->prev = NULL;
-
-	while (next->next)
+	while (next)
 	{
+		if (!next->next)
+		{
+			if (top->next)
+			{
+				*st = top->next;
+				top->next->prev = NULL;
+				top->next = NULL;
+				top->prev = next;
+				next->next = top;
+				break;
+			}
+		}
 		next = next->next;
 	}
-
-	next->next = *st;
-
-	(*st)->next = NULL;
-	(*st)->prev = next;
-
-	*st = top;
-
 	(void) line_number;
 }
 /**
@@ -37,25 +35,23 @@ void rotl(stack_t **st, unsigned int line_number)
  */
 void rotr(stack_t **st, unsigned int line_number)
 {
-	stack_t *next = *st;
+	stack_t *last = *st, *top = *st;
 
-	if (!st || !(*st) || next->next == NULL)
-		return;
-
-
-	while (next->next)
+	while (last)
 	{
-		next = next->next;
+		if (!last->next)
+		{
+			if(last->prev)
+			{
+				last->prev->next = NULL;
+				last->prev = NULL;
+				last->next = top;
+				top->prev = last;
+				*st = last;
+				break;
+			}
+		}
+		last = last->next;
 	}
-
-	next->next = *st;
-
-	next->prev->next = NULL;
-	next->prev = NULL;
-
-	(*st)->prev = next;
-
-	(*st) = next;
-
 	(void) line_number;
 }

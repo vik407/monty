@@ -23,6 +23,7 @@ void (*opcode_handler(char *opcode))(stack_t **, unsigned int)
 		{"pstr", pstr},
 		{"nop", _nop},
 		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 

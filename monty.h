@@ -79,6 +79,7 @@ void swap(stack_t **stack, unsigned int line_number);
 
 /*Rotate functions*/
 void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 
 void exit_failure(stack_t **st, const char *mess);
 void free_stack(stack_t **st);

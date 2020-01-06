@@ -10,8 +10,11 @@ int is_amonty_file(char *filename)
 	int len = strlen(filename);
 
 	len--;
-	if (filename[len - 1] == '.' && filename[len] == 'm')
-		return (1);
+	if (len > 1)
+	{
+		if (filename[len - 1] == '.' && filename[len] == 'm')
+			return (1);
+	}
 	return (0);
 }
 /**
@@ -40,9 +43,9 @@ char *read_file(char *filename)
 	s = stat(filename, &st);
 	if (s == 0)
 	{
-		/*if ((st.st_mode & S_IFMT) != S_IFREG || !is_amonty_file(filename))*/
-		if (!is_amonty_file(filename))
+		if ((st.st_mode & S_IFMT) != S_IFREG)
 			cant_open_file(filename, &stack);
+		/*if (!is_amonty_file(filename))*/
 	} else
 	{ cant_open_file(filename, &stack);
 	}
