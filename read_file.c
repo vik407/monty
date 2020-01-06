@@ -1,5 +1,4 @@
 #include "monty.h"
-void read_line(stack_t **stack);
 /**
  * is_amonty_file - read the content of a monty file.
  * @filename: The file  to a file
@@ -60,7 +59,7 @@ char *read_file(char *filename)
  * @stack: The stack to work
  * Return: void.
  */
-void read_line(stack_t **stack)
+char *read_line(stack_t **stack)
 {
 	char *opcode = NULL;
 	size_t buffsize = 1024;
@@ -103,6 +102,5 @@ void read_line(stack_t **stack)
 			}
 		}
 	}
+	return (opcode);
 }
-
-

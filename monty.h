@@ -56,6 +56,7 @@ typedef struct instruction_s
 } instruction_t;
 
 char *read_file(char *filename);
+char *read_line(stack_t **stack);
 void (*opcode_handler(char *opcode))(stack_t **, unsigned int);
 
 /*I/O functions */
