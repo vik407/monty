@@ -17,13 +17,13 @@ void rotl(stack_t **st, unsigned int line_number)
 
 	while (next->next)
 	{
-		next = next->next;		
+		next = next->next;
 	}
 
 	next->next = *st;
 
 	(*st)->next = NULL;
-	(*st)->prev =next;
+	(*st)->prev = next;
 
 	*st = top;
 
@@ -39,11 +39,23 @@ void rotr(stack_t **st, unsigned int line_number)
 {
 	stack_t *next = *st;
 
-	while (next)
+	if (!st || !(*st) || next->next == NULL)
+		return;
+
+
+	while (next->next)
 	{
-		next = (*st)->next;
-		free(*st);
-		*st = next;
+		next = next->next;
 	}
+
+	next->next = *st;
+
+	next->prev->next = NULL;
+	next->prev = NULL;
+
+	(*st)->prev = next;
+
+	(*st) = next;
+
 	(void) line_number;
 }
