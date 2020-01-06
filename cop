@@ -1,0 +1,22 @@
+#!/bin/bash
+ls /home/dan/test_monty/monty/*.c |
+while read file
+do
+    file=$(echo $file | cut -d "/" -f6)
+    echo "coping ${file}"
+    cp -r "/home/dan/test_monty/monty/${file}" "${file}"
+done
+ls /home/dan/test_monty/monty/*.h |
+while read file
+do
+    file=$(echo $file | cut -d "/" -f6)
+    echo "coping ${file}"
+    cp -r "/home/dan/test_monty/monty/${file}" "${file}"
+done
+ls /home/dan/test_monty/monty/bf |
+while read file
+do
+    file=$(echo $file | cut -d "/" -f7)
+    echo "coping ${file}"
+    cp -r "/home/dan/test_monty/monty/bf/${file}" "${file}"
+done
